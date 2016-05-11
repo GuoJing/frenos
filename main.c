@@ -1,6 +1,6 @@
 #include <system.h>
 
-unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count)
+void *memcpy(void *dest, const void *src, size_t count)
 {
   const char *sp = (const char *)src;
   char *dp = (char *)dest;
@@ -8,7 +8,7 @@ unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count)
   return dest;
 }
 
-unsigned char *memset(unsigned char *dest, unsigned char val, int count)
+void *memset(void *dest, char val, size_t count)
 {
   char *temp = (char *)dest;
   for( ; count != 0; count--) *temp++ = val;
@@ -22,9 +22,9 @@ unsigned short *memsetw(unsigned short *dest, unsigned short val, int count)
   return dest;
 }
 
-int strlen(const char *str)
+size_t strlen(char *str)
 {
-  int retval;
+  size_t retval;
   for(retval = 0; *str != '\0'; str++) retval++;
   return retval;
 }
@@ -43,6 +43,8 @@ void outportb(unsigned short _port, unsigned char _data)
 
 int main()
 {
+  __asm__ __volatile__ ("sti");
+  puts("Hello!\n");
   for(;;);
   return 0;
 }

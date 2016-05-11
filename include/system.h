@@ -1,11 +1,18 @@
 #ifndef __SYSTEM_H
 #define __SYSTEM_H
 
-extern unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count);
-extern unsigned char *memset(unsigned char *dest, unsigned char val, int count);
-extern unsigned short *memsetw(unsigned short *dest, unsigned short val, int count);
-extern int strlen(const char *str);
+typedef int size_t;
+
+extern void *memcpy(void *dest, const void *src, size_t count);
+extern void *memset(void *dest, char val, size_t count);
+extern unsigned short *memsetw(unsigned short *dest, unsigned short val, size_t count);
+extern size_t strlen(char *str);
 extern unsigned char inportb (unsigned short _port);
 extern void outportb (unsigned short _port, unsigned char _data);
+
+extern void init_video(void);
+extern void puts(char *text);
+extern void putch(unsigned char c);
+extern void cls();
 
 #endif
