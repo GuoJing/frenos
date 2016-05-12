@@ -15,4 +15,9 @@ extern void puts(char *text);
 extern void putch(unsigned char c);
 extern void cls();
 
+extern void gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
+extern void gdt_install();
+
+extern void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, unsigned char flags);
+extern void idt_install();
 #endif

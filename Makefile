@@ -4,10 +4,17 @@ build:
 # -m 32
 	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c -o main.o main.c -m32
 	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c -o scrn.o scrn.c -m32
+	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c -o gdt.o gdt.c -m32
+	gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./include -c -o idt.o idt.c -m32
 # -elf_i386
-	ld -T link.ld -o kernel.bin start.o main.o scrn.o -m elf_i386
+	ld -T link.ld -o kernel.bin start.o main.o scrn.o gdt.o idt.o -m elf_i386
 	rm *.o
 	dd if=/dev/zero of=kernel.img bs=1M count=64
 	dd status=noxfer conv=notrunc if=kernel.bin of=kernel.img
 	cp kernel.bin ../Desktop/Parallels\ Shared\ Folders/Downloads/os/
 	cp kernel.img ../Desktop/Parallels\ Shared\ Folders/Downloads/os/
+
+clean:
+	rm *.o
+	rm kernel.bin
+	rm kernel.img

@@ -43,8 +43,14 @@ void outportb(unsigned short _port, unsigned char _data)
 
 int main()
 {
+  // init kernel
+  gdt_install();
+  idt_install();
+
   __asm__ __volatile__ ("sti");
+
   puts("Hello!\n");
+
   for(;;);
   return 0;
 }

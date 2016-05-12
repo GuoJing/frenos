@@ -31,6 +31,29 @@ stublet:
 	call main
 	jmp $
 
+global gdt_flush
+extern gp
+gdt_flush
+	lgdt[gp]
+	mov ax, 0x10
+	mov ds, ax
+	mov es, ax
+	mov fs, ax
+	mov gs, ax
+	mov ss, ax
+	;; 0x08 is the offset to our code segment: Far jump!
+	jmp 0x80:flush2
+
+flush2:
+	;; return back to the C code
+	ret
+
+global idt_load
+extern idtp
+idt_load:
+	lidt[idtp]
+	ret
+
 SECTION .bss
 	resb	8192
 
