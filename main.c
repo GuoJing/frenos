@@ -46,10 +46,14 @@ int main()
   // init kernel
   gdt_install();
   idt_install();
+  isrs_install();
+  irq_install();
+  init_video();
 
   __asm__ __volatile__ ("sti");
 
-  puts("Hello!\n");
+  puts("KERNEL INIT DONE.\n");
+  puts("KERNEL START MAIN LOOP (IDLE).\n");
 
   for(;;);
   return 0;
