@@ -49,6 +49,8 @@ int main()
   isrs_install();
   irq_install();
   init_video();
+  timer_install();
+  keyboard_install();
 
   __asm__ __volatile__ ("sti");
 
