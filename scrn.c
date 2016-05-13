@@ -76,6 +76,36 @@ void cls()
     move_csr();
 }
 
+void delete_handle()
+{
+  // delete handle backspace
+  if(csr_x != 0)
+  {
+    csr_x--;
+    putch(0x20);
+    csr_x--;
+  }
+  else
+  {
+    /*
+      hmmm...
+      this is a vim editor...
+      if(csr_y != 0)
+      {
+        csr_y--;
+	csr_x = 79;
+	putch(0x20);
+	csr_y--;
+	csr_x = 79;
+       }
+       else
+       {
+         // do nothing
+       }
+    */
+  }
+}
+
 void putch(unsigned char c)
 {
     unsigned short *where;
@@ -83,7 +113,7 @@ void putch(unsigned char c)
 
     if(c == 0x08)
     {
-        if(csr_x != 0) csr_x--;
+      delete_handle();
     }
     else if(c == 0x09)
     {
