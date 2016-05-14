@@ -1,5 +1,13 @@
 ## A simple toy kernel
 
+### Overview
+
+A simple tony kernel, just a study on how to write a OS kernel.
+
+<p align="center">
+<img src="images/screen.jpg" width="800px">
+</p>
+
 ### Book
 
 [Bran's Kernel Development](http://www.osdever.net/bkerndev/Docs/title.htm)
