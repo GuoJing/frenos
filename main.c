@@ -54,9 +54,10 @@ int main()
 
   __asm__ __volatile__ ("sti");
 
+  settextcolor(2, 0);
   puts("KERNEL INIT DONE.\n");
+  settextcolor(15, 0);
   puts("KERNEL START MAIN LOOP (IDLE).\n");
-
   for(;;);
   return 0;
 }
