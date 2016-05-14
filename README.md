@@ -8,6 +8,12 @@ A simple tony kernel, just a study on how to write a OS kernel.
 <img src="images/screen.jpg" width="800px">
 </p>
 
+Folders:
+
+* src: source code
+* tools: linker config file
+* Makefile: build the kernel
+
 ### Book
 
 [Bran's Kernel Development](http://www.osdever.net/bkerndev/Docs/title.htm)
