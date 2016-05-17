@@ -44,20 +44,26 @@ void outportb(unsigned short _port, unsigned char _data)
 int main()
 {
   // init kernel
-  gdt_install();
-  idt_install();
-  isrs_install();
-  irq_install();
-  init_video();
-  timer_install();
-  keyboard_install();
+  init_video();         puts("[OK] VIDEO INIT DONE");
+  gdt_install();        puts("[OK] GDT INIT DONE\n");
+  idt_install();        puts("[OK] IDT INIT DONE\n");
+  isrs_install();       puts("[OK] ISRS INIT DONE\n");
+  irq_install();        puts("[OK] IRQ INIT DONE\n");
+  timer_install();      puts("[OK] TIMER INIT DONE\n");
+  keyboard_install();   puts("[OK] KEYBOARD INIT DONE\n");
 
   __asm__ __volatile__ ("sti");
 
   settextcolor(2, 0);
-  puts("KERNEL INIT DONE.\n");
+
+  puts("\n************************\n");
+  puts("   Welcome to frenOS\n");
+  puts("  A toy unix like OS \n");
+  puts("************************\n\n");
+
   settextcolor(15, 0);
-  puts("KERNEL START MAIN LOOP (IDLE).\n");
+  puts("login:");
+
   for(;;);
   return 0;
 }

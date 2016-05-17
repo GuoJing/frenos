@@ -85,25 +85,6 @@ void delete_handle()
     putch(0x20);
     csr_x--;
   }
-  else
-  {
-    /*
-      hmmm...
-      this is a vim editor...
-      if(csr_y != 0)
-      {
-        csr_y--;
-	csr_x = 79;
-	putch(0x20);
-	csr_y--;
-	csr_x = 79;
-       }
-       else
-       {
-         // do nothing
-       }
-    */
-  }
 }
 
 void putch(unsigned char c)
